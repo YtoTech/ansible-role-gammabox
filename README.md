@@ -12,7 +12,7 @@ A Raspberry Pi with Raspbian, accessible from SSH.
 
 | Variable      | Use           | Default to  |
 | ------------- |:-------------:| -----:|
-| `gammabox_path` | Where to checkout and install the Gamma Box code. | `/home/pi/.gammebox/GammaBox` |
+| `gammabox_path` | Where to checkout and install the Gamma Box code | `/home/pi/.gammebox/GammaBox` |
 | `gammabox_web.port` | The port on which to run the HTTP Gamma Box web server and API | `80` |
 
 ## Example Playbook

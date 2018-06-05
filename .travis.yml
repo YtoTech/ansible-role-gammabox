@@ -1,5 +1,8 @@
 ---
+services: docker
 
+script:
+  run: echo "Ok"
 # TODO Add tests?
 
 notifications:

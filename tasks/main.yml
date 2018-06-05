@@ -5,12 +5,14 @@
 # Runtimes.
 #################################################################################
 
-- name: Install Pip locally
-  pip:
-    name: pip
-    state: present
-    executable: pip3
-    extra_args: --user -U
+# TODO Make it work with stock Debian python3-pip.
+# Else add instructions
+# - name: Install Pip locally
+#   pip:
+#     name: pip
+#     state: present
+#     executable: pip3
+#     extra_args: --user -U
 
 - name: Install Pipenv
   pip:
