@@ -2,6 +2,7 @@
 services: docker
 
 script: echo "Ok"
+
 # TODO Add tests?
 
 notifications:
