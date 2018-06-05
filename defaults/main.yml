@@ -1,4 +1,8 @@
 ---
+# Default to /usr/bin/pip3 with stock installation.
+# You may want to use $HOME/.bin/local/pip3 if you installed pip
+# locally and added $HOME/.bin/local to the path.
+gammabox_pip_bin: /usr/bin/pip3
 gammabox_path: '/home/pi/.gammabox/GammaBox'
 gammabox_web:
   port: 80

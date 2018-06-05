@@ -5,22 +5,11 @@
 # Runtimes.
 #################################################################################
 
-# TODO Make it work with stock Debian python3-pip.
-# TODO Add a variable to choose which pip to use for installing pipenv.
-# Default to stock pip (/usr/bin/pip3)
-# Else add instructions
-# - name: Install Pip locally
-#   pip:
-#     name: pip
-#     state: present
-#     executable: pip3
-#     extra_args: --user -U
-
 - name: Install Pipenv
   pip:
     name: pipenv
     state: present
-    executable: /$HOME/.local/bin/pip3
+    executable: "{{ gammabox_pip_bin }}"
     extra_args: --user
 
 - name: Configure PIPENV_TIMEOUT environment variable
