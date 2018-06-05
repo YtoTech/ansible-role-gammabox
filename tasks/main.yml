@@ -6,6 +6,8 @@
 #################################################################################
 
 # TODO Make it work with stock Debian python3-pip.
+# TODO Add a variable to choose which pip to use for installing pipenv.
+# Default to stock pip (/usr/bin/pip3)
 # Else add instructions
 # - name: Install Pip locally
 #   pip:
@@ -20,6 +22,13 @@
     state: present
     executable: /$HOME/.local/bin/pip3
     extra_args: --user
+
+- name: Configure PIPENV_TIMEOUT environment variable
+  lineinfile:
+    path: $HOME/.profile
+    line: 'export PIPENV_TIMEOUT=500'
+    insertafter: 'EOF'
+    state: present
 
 #################################################################################
 # Code directory (Git checkout).
@@ -39,8 +48,9 @@
 # TODO Create a make install entry.
 # - name: Run make install
 - name: Install Python dependencies
-  # become: yes
   shell: cd {{ gammabox_path }} && /$HOME/.local/bin/pipenv install
+  environment:
+    - PIPENV_TIMEOUT: 500
 
 #################################################################################
 # Gamma Box settings.

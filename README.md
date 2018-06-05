@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/YtoTech/ansible-role-gammabox.svg?branch=master)](https://travis-ci.org/YtoTech/ansible-role-gammabox)
 
-Ansible role for installing the [Gamma Box](https://github.com/MonsieurV/GammaBox) on a Raspberry Pi (Raspbian).
+Ansible [role](https://galaxy.ansible.com/YtoTech/gammabox/) for installing the [Gamma Box](https://github.com/MonsieurV/GammaBox) on a Raspberry Pi (Raspbian).
 
 ## Requirements
 
