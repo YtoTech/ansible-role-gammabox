@@ -1,0 +1,77 @@
+---
+# This role deploys a GammaBox on a Raspberry Pi Raspbian.
+
+#################################################################################
+# Runtimes.
+#################################################################################
+
+- name: Install Pipenv
+  # become: true
+  pip:
+    name: pipenv
+    state: present
+    executable: pip3
+    extra_args: --user
+
+#################################################################################
+# Code directory (Git checkout).
+#################################################################################
+
+# TODO Only clone, checkout branch and install the first time?
+# (Not it does not erase any WIP).
+- name: Cloning git repository and setting the branch
+  # become: yes
+  git:
+    repo: "{{ gammabox_git.url }}"
+    dest: "{{ gammabox_path }}"
+    version: "{{ gammabox_git.branch }}"
+    clone: yes
+    # update: yes
+
+#################################################################################
+# Application dependencies.
+#################################################################################
+
+# TODO Create a make install entry.
+# - name: Run make install
+- name: Install Python dependencies
+  # become: yes
+  shell: cd {{ gammabox_path }} && pipenv install
+
+#################################################################################
+# Gamma Box settings.
+#################################################################################
+
+# TODO Create the config file.
+
+# - name: Create app_zend config
+#   become: yes
+#   template:
+#     src: config.json.dev.j2
+#     dest: '{{ web.path }}/app_zend/config/local.json'
+
+#################################################################################
+# Set up Gamma Box service and launch it.
+#################################################################################
+
+
+#################################################################################
+# Public www.
+#################################################################################
+
+# TODO Option to deploy under a Nginx/lighttpd server,
+# with SSL/TLS Let's Encrypt certificate?
+
+
+#################################################################################
+# Deployment checks.
+#################################################################################
+
+# TODO Get host ip. However will only work when deployment in the same network.
+# (or on exposed port)
+# - name: Test the {{ web.host_front }} website is up
+#   uri:
+#     url: https://{{ web.host_front }}
+#     status_code: 200
+#   delegate_to: localhost
+#   become: no

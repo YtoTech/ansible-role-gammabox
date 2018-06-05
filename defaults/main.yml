@@ -1,0 +1,7 @@
+---
+gammabox_path: '/home/pi/.gammabox/GammaBox'
+gammabox_web:
+  port: 80
+gammabox_git:
+  url: https://github.com/MonsieurV/GammaBox.git
+  branch: 'master'
