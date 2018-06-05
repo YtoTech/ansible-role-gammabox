@@ -5,28 +5,30 @@
 # Runtimes.
 #################################################################################
 
+- name: Install Pip locally
+  pip:
+    name: pip
+    state: present
+    executable: pip3
+    extra_args: --user -U
+
 - name: Install Pipenv
-  # become: true
   pip:
     name: pipenv
     state: present
-    executable: pip3
+    executable: /$HOME/.local/bin/pip3
     extra_args: --user
 
 #################################################################################
 # Code directory (Git checkout).
 #################################################################################
 
-# TODO Only clone, checkout branch and install the first time?
-# (Not it does not erase any WIP).
 - name: Cloning git repository and setting the branch
-  # become: yes
   git:
     repo: "{{ gammabox_git.url }}"
     dest: "{{ gammabox_path }}"
     version: "{{ gammabox_git.branch }}"
     clone: yes
-    # update: yes
 
 #################################################################################
 # Application dependencies.
@@ -36,7 +38,7 @@
 # - name: Run make install
 - name: Install Python dependencies
   # become: yes
-  shell: cd {{ gammabox_path }} && pipenv install
+  shell: cd {{ gammabox_path }} && /$HOME/.local/bin/pipenv install
 
 #################################################################################
 # Gamma Box settings.
